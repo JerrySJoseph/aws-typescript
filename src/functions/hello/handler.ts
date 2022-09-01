@@ -1,19 +1,12 @@
-import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult, Context, Callback } from 'aws-lambda'
+import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult, Context } from 'aws-lambda';
+import AWSLambdaResponse from 'src/AWSLambdaResponse';
 
 const handler: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent,
-  ctx: Context,
-  cb: Callback): Promise<APIGatewayProxyResult> => {
+  ctx: Context): Promise<APIGatewayProxyResult> => {
 
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      success:true,
-      event,
-      ctx,
-    })
-  }
+  return AWSLambdaResponse._200()
 }
 
 export const main = handler;
